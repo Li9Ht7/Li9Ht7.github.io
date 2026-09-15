@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-neon: var(--neon);
+  --color-cyan: var(--cyan);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* deep black / slate */
+  --background: oklch(0.16 0.006 240);
+  --foreground: oklch(0.94 0.005 210);
+
+  --card: oklch(0.2 0.008 240);
+  --card-foreground: oklch(0.94 0.005 210);
+
+  --popover: oklch(0.18 0.008 240);
+  --popover-foreground: oklch(0.94 0.005 210);
+
+  /* neon green primary */
+  --primary: oklch(0.86 0.24 145);
+  --primary-foreground: oklch(0.16 0.02 150);
+
+  --secondary: oklch(0.26 0.01 240);
+  --secondary-foreground: oklch(0.94 0.005 210);
+
+  --muted: oklch(0.24 0.01 240);
+  --muted-foreground: oklch(0.66 0.015 220);
+
+  /* cyan accent */
+  --accent: oklch(0.82 0.15 200);
+  --accent-foreground: oklch(0.16 0.02 220);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.96 0.01 20);
+
+  --warning: oklch(0.8 0.16 75);
+  --warning-foreground: oklch(0.2 0.03 75);
+
+  --info: oklch(0.72 0.13 230);
+  --info-foreground: oklch(0.16 0.02 230);
+
+  --border: oklch(0.3 0.01 240 / 70%);
+  --input: oklch(0.3 0.01 240);
+  --ring: oklch(0.86 0.24 145);
+
+  --neon: oklch(0.86 0.24 145);
+  --cyan: oklch(0.82 0.15 200);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.14 0.006 240);
+  --sidebar-foreground: oklch(0.94 0.005 210);
+  --sidebar-border: oklch(0.28 0.01 240 / 70%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--neon) 35%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 12px color-mix(in oklch, var(--neon) 55%, transparent);
+  }
+  .cyan-glow {
+    text-shadow: 0 0 12px color-mix(in oklch, var(--cyan) 55%, transparent);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+  }
+}
